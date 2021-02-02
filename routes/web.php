@@ -1,6 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\RequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/verpeticion', 'RequestController@verpeticion');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::view('/','home')->name('home');
+Route::view('/','datosempresa');
+Route::view('/portfolio' ,'portfolio')->name('portfolio');
+Route::view('/contact' ,'contact')->name('contact');
+Route::view('/cacheadas', 'contact');
