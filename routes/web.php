@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\DatosEmpresaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,11 @@ use App\Http\Controllers\RequestController;
 */
 Route::get('/verpeticion', 'RequestController@verpeticion');
 
+
 //Route::view('/','home')->name('home');
 Route::view('/','datosempresa');
+Route::post('/', [DatosEmpresaController::class,'index']);
+
 Route::view('/portfolio' ,'portfolio')->name('portfolio');
 Route::view('/contact' ,'contact')->name('contact');
 Route::view('/cacheadas', 'contact');
