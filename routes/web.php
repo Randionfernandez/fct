@@ -24,3 +24,7 @@ Route::post('/', [DatosEmpresaController::class,'index']);
 Route::view('/portfolio' ,'portfolio')->name('portfolio');
 Route::view('/contact' ,'contact')->name('contact');
 Route::view('/cacheadas', 'contact');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

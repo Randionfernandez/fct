@@ -1,0 +1,71 @@
+En la rama master
+Tu rama está adelantada a 'fct_github/master' por 1 commit.
+  (usa "git push" para publicar tus commits locales)
+
+Cambios no rastreados para el commit:
+  (usa "git add <archivo>..." para actualizar lo que será confirmado)
+  (usa "git restore <archivo>..." para descartar los cambios en el directorio de trabajo)
+	modificado:     .env.example
+	modificado:     .gitignore
+	modificado:     app/Http/Kernel.php
+	modificado:     app/Models/User.php
+	modificado:     app/Providers/RouteServiceProvider.php
+	modificado:     composer.json
+	modificado:     composer.lock
+	modificado:     config/app.php
+	modificado:     config/session.php
+	modificado:     database/migrations/2014_10_12_000000_create_users_table.php
+	modificado:     package.json
+	modificado:     resources/css/app.css
+	modificado:     resources/js/app.js
+	modificado:     resources/views/welcome.blade.php
+	modificado:     routes/api.php
+	modificado:     routes/web.php
+	modificado:     webpack.mix.js
+
+Archivos sin seguimiento:
+  (usa "git add <archivo>..." para incluirlo a lo que se será confirmado)
+	app/Actions/
+	app/Providers/FortifyServiceProvider.php
+	app/Providers/JetstreamServiceProvider.php
+	app/View/Components/AppLayout.php
+	app/View/Components/GuestLayout.php
+	cambios_al_instalar_autenticacion
+	config/fortify.php
+	config/jetstream.php
+	config/sanctum.php
+	database/migrations/2014_10_12_200000_add_two_factor_columns_to_users_table.php
+	database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php
+	database/migrations/2021_02_03_234019_create_sessions_table.php
+	nbproject/private/
+	package-lock.json
+	public/css/
+	public/js/
+	public/mix-manifest.json
+	resources/markdown/
+	resources/views/api/
+	resources/views/auth/
+	resources/views/dashboard.blade.php
+	resources/views/layouts/app.blade.php
+	resources/views/layouts/guest.blade.php
+	resources/views/navigation-menu.blade.php
+	resources/views/policy.blade.php
+	resources/views/profile/
+	resources/views/terms.blade.php
+	tailwind.config.js
+	tests/Feature/ApiTokenPermissionsTest.php
+	tests/Feature/AuthenticationTest.php
+	tests/Feature/BrowserSessionsTest.php
+	tests/Feature/CreateApiTokenTest.php
+	tests/Feature/DeleteAccountTest.php
+	tests/Feature/DeleteApiTokenTest.php
+	tests/Feature/EmailVerificationTest.php
+	tests/Feature/PasswordConfirmationTest.php
+	tests/Feature/PasswordResetTest.php
+	tests/Feature/ProfileInformationTest.php
+	tests/Feature/RegistrationTest.php
+	tests/Feature/TwoFactorAuthenticationSettingsTest.php
+	tests/Feature/UpdatePasswordTest.php
+	vendor/
+
+sin cambios agregados al commit (usa "git add" y/o "git commit -a")
