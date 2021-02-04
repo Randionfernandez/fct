@@ -3,23 +3,33 @@
 @section('contenido')
 <h1>Datos iniciales para nuevo Acuerdo</h1>
 
+<h3>
+    @if($errors->any())
+    @foreach($errors->all() as $error)
+    {{$error}}
+    @endforeach
+    @endif
+</h3>
+
 <form method="post">
     @csrf
-    <fieldset class="bg-info border p-2">
+    <fieldset class="border p-2">
         <legend>Datos de empresa</legend>
 
         <!-- Nombre, texto, obligatorio -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="nombre_emp" class="form-label">Nombre</label>
-                <input class="form-control" type="text" name="nombre_emp" id="nombre_emp">
+                <input class="form-control" name="nombre_emp" value="{{old('nombre_emp')}}" id="nombre_emp">
+                <div>{!! $errors->first('nombre_emp','<small>:message</small>') !!}</div>   
             </div>
 
 
             <!-- CIF de la empresa, texto, obligatorio -->
             <div class="mb-3 col-2">
                 <label for="cif" class="form-label">CIF</label>
-                <input class="form-control" type="text" name="cif" id="cif">
+                <input class="form-control" name="cif" id="cif">
+                {{$errors->first('cif')}}
             </div>
 
         </div>
@@ -29,21 +39,21 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="direccion_emp" class="form-label">Direccón postal</label>
-                <input class="form-control" type="text" name="direccion_emp" id="direccion_emp">
+                <input class="form-control" name="direccion_emp" value="{{old('direccion_emp')}}" id="direccion_emp">
             </div>
 
 
             <!-- Población, text, obligatorio -->
             <div class="mb-3 col-4">
                 <label for="poblacion_emp" class="form-label">Población</label>
-                <input class="form-control" type="text" name="poblacion_emp" id="poblacion_emp">
+                <input class="form-control" name="poblacion_emp" id="poblacion_emp">
             </div>
 
 
             <!-- Código postal, texto 5 numéricos -->
             <div class="mb-3 col-2">
                 <label for="cp_emp" class="form-label">Código postal</label>
-                <input class="form-control" type="text" maxlength="5" name="cp_emp" id="cp_emp" placeholder="07123">
+                <input class="form-control" maxlength="5" name="cp_emp" id="cp_emp" placeholder="07123">
             </div>
         </div>
 
@@ -108,7 +118,7 @@
         <!-- Actividad principal, texto -->
         <div class="mb-3">
             <label for="actividad_emp" class="form-label">Actividad principal</label>
-            <input class="form-control" type="text" name="actividad_emp" id="actividad_emp" placeholder="Actividad principal">
+            <input class="form-control"  name="actividad_emp" id="actividad_emp" placeholder="Actividad principal">
         </div>
 
 
@@ -135,7 +145,7 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="nombre_representante_em" class="form-label">Nombre</label>
-                <input class="form-control" type="text" name="nombre_representante_emp" id="nombre_representante_emp" aria-describedby="HelpBlock">
+                <input class="form-control" name="nombre_representante_emp" id="nombre_representante_emp" aria-describedby="HelpBlock">
                 <div id="HelpBlock" class="form-text">
                     Nombre y apellidos del representante de la empresa.
                 </div>
@@ -145,7 +155,7 @@
             <!-- nif del representante de la empresa, obligatorio -->
             <div class="mb-3 col-2">
                 <label for="nif_representante_emp" class="form-label">NIF</label>
-                <input class="form-control" type="text" name="nif_representante_emp" id="nif_representante_em">
+                <input class="form-control" name="nif_representante_emp" id="nif_representante_em">
             </div>
 
         </div>
@@ -158,27 +168,27 @@
         <!-- Nombre del centro de trabajo, text, obligatorio -->
         <div class="mb-3 col-6">
             <label for="nombre_ct" class="form-label">Nombre</label>
-            <input class="form-control" type="text" name="nombre_ct" id="nombre_ct">
+            <input class="form-control" name="nombre_ct" id="nombre_ct">
         </div>
 
-
+        requi
         <!-- Dirección del centro de trabajo -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="direccion_ct" class="form-label">Direccón postal</label>
-                <input class="form-control" type="text" name="direccion_ct" id="direccion_ct">
+                <input class="form-control" name="direccion_ct" id="direccion_ct">
             </div>
 
             <!-- Población, text, obligatorio -->
             <div class="mb-3 col-4">
                 <label for="poblacion_ct" class="form-label">Población</label>
-                <input class="form-control" type="text" name="poblacion_ct" id="poblacion_ct">
+                <input class="form-control" name="poblacion_ct" id="poblacion_ct">
             </div>
 
             <!-- Código postal, texto 5 numéricos -->
             <div class="mb-3 col-2">
                 <label for="cp_ct" class="form-label">Código postal</label>
-                <input class="form-control" type="text" name="cp_ct" maxlength="5" id="cp_ct" placeholder="07123">
+                <input class="form-control" name="cp_ct" maxlength="5" id="cp_ct" placeholder="07123">
             </div>
         </div>
 
@@ -187,13 +197,13 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="actividad_ct" class="form-label">Actividad principal</label>
-                <input class="form-control" type="text" name="actividad_ct" id="actividad_ct">
+                <input class="form-control" name="actividad_ct" id="actividad_ct">
             </div>
 
             <!-- Número de trabajadores -->
             <div class="mb-3 col-4">
                 <label for="num_trabajadores_ct" class="form-label">Número de trabajadores</label>
-                <input class="form-control" type="text" name="num_trabajadores_ct" id="num_trabajadores_ct">
+                <input class="form-control" name="num_trabajadores_ct" id="num_trabajadores_ct">
             </div>
         </div>
 
@@ -247,7 +257,7 @@
         <!-- Horario, text, opcional -->
         <div class="mb-3 col-2">
             <label for="horario" class="form-label">Horario</label>
-            <input class="form-control" type="text" name="horario" id="horario">
+            <input class="form-control" name="horario" id="horario">
         </div>
 
     </fieldset>
@@ -261,7 +271,7 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="nombre_coordinador_fct" class="form-label">Nombre del coordinador de FCT</label>
-                <input class="form-control" type="text" name="nombre_coordinador_fct" id="nombre_coordinador_fct" aria-describedby="HelpCoordinador">
+                <input class="form-control" name="nombre_coordinador_fct" id="nombre_coordinador_fct" aria-describedby="HelpCoordinador">
                 <div id="HelpCoordinador" class="form-text">
                     Nombre y apellidos del coordinador de FCT de la empresa (si lo hubiese).
                 </div>
@@ -271,7 +281,7 @@
             <!-- nif del coordinador de FCT, obligatorio se existe coordinador -->
             <div class="mb-3 col-2">
                 <label for="nif_coordinador_fct" class="form-label">NIF del coordinador FCT</label>
-                <input class="form-control" type="text" name="nif_coordinador_fct" id="nif_coordinador_fct">
+                <input class="form-control" name="nif_coordinador_fct" id="nif_coordinador_fct">
             </div>
 
         </div>
@@ -281,7 +291,7 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="nombre_tutor_fct" class="form-label">Nombre del tutor</label>
-                <input class="form-control" type="text" name="nombre_tutor_fct" id="nombre_tutor_fct"  aria-describedby="HelpTutor">
+                <input class="form-control" name="nombre_tutor_fct" id="nombre_tutor_fct"  aria-describedby="HelpTutor">
                 <div id="HelTutor" class="form-text">
                     Nombre y apellidos del tutor de FCT.
                 </div>
@@ -291,7 +301,7 @@
             <!-- nif del tutor de FCT -->
             <div class="mb-3 col-2">
                 <label for="nif_tutor_fct" class="form-label">NIF del tutor</label>
-                <input class="form-control" type="text" name="nif_tutor_fct"  id="nif_tutor_fct">
+                <input class="form-control" type="text" name="nif_tutor_fct" required id="nif_tutor_fct">
             </div>
 
         </div>
@@ -306,7 +316,7 @@
         <!-- Población en que se firma -->
         <div class="form-floating mb-3">
             <label for="lugar_firma" class="form-label">Firmado en: </label>
-            <input class="form-control" type="text" name="lugar_firma" id="lugar_firma">
+            <input class="form-control" name="lugar_firma" id="lugar_firma">
         </div>
 
         <!-- Fecha del envío de estos datos -->

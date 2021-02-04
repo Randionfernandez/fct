@@ -29,7 +29,7 @@ class CreateEmpresasTable extends Migration {
             $table->string('email_emp')->unique();
             $table->enum('sector_productivo', ['primario', 'secundario', 'terciario']);
             $table->string('actividad_principal');
-            $table->enum('titularidad', 'publica', 'privada');
+            $table->enum('titularidad', ['publica', 'privada']);
             $table->string('representante_nombre');
             $table->string('representante_nif');
             $table->string('nombre_coordinador_fct')->nullable()->comment('Puede suprimirse, asumiendo que todo coordinador figure en tabla de tutores');

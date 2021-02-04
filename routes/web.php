@@ -14,17 +14,17 @@ use App\Http\Controllers\DatosEmpresaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/verpeticion', 'RequestController@verpeticion');
+
 
 
 //Route::view('/','home')->name('home');
 Route::view('/','datosempresa');
-Route::post('/', [DatosEmpresaController::class,'index']);
+Route::post('/', [DatosEmpresaController::class,'store']);
 
 Route::view('/portfolio' ,'portfolio')->name('portfolio');
 Route::view('/contact' ,'contact')->name('contact');
 Route::view('/cacheadas', 'contact');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
