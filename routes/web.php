@@ -21,9 +21,13 @@ use App\Http\Controllers\DatosEmpresaController;
 Route::view('/','datosempresa');
 Route::post('/', [DatosEmpresaController::class,'store']);
 
+//Route::view('/activar','activarenlaces');
+
 Route::view('/portfolio' ,'portfolio')->name('portfolio');
 Route::view('/contact' ,'contact')->name('contact');
 Route::view('/cacheadas', 'contact');
+
+Route::view('/check','checkbox_old');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
