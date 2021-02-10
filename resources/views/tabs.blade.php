@@ -1,23 +1,52 @@
-@extends('layouts.layout')
+@extends('layouts.layout')<!-- comment -->
 
 @section('contenido')
-<h1>{{__('datosempresa.titulo_datos_emp')}}</h1>
-
-
-@if($errors->any())
-<ul>
-    @foreach($errors->all() as $error)
-    <li>{{$error}}</li>
-    @endforeach
+<!-- Tabs navs -->
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a
+            class="nav-link"
+            id="ex1-tab-1"
+            data-bs-toggle="tab"
+            href="#ex1-tabs-1"
+            role="tab"
+            aria-controls="ex1-tabs-1"
+            aria-selected="false"
+            >Datos de empresa</a>
+    </li>
+    <li class="nav-item active" role="presentation">
+        <a
+            class="nav-link"
+            id="ex1-tab-2"
+            data-bs-toggle="tab"
+            href="#ex1-tabs-2"
+            role="tab"
+            aria-controls="ex1-tabs-2"
+            aria-selected="true"
+            >Datos del centro de trabajo</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a
+            class="nav-link"
+            id="ex1-tab-3"
+            data-bs-toggle="tab"
+            href="#ex1-tabs-3"
+            role="tab"
+            aria-controls="ex1-tabs-3"
+            aria-selected="false"
+            >Otros datos</a>
+    </li>
 </ul>
-@endif
-
-
-<form method="post">
-    @csrf
-    <fieldset class="border p-2">
-        <legend>Datos de empresa</legend>
-
+<!-- Tabs navs -->
+<form method='post'>
+<!-- Tabs content -->
+<div class="tab-content" id="ex1-content">
+    <div
+        class="tab-pane fade show active"
+        id="ex1-tabs-1"
+        role="tabpanel"
+        aria-labelledby="ex1-tab-1"
+        >
         <!-- Nombre de la empresa, texto, obligatorio -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
@@ -40,7 +69,7 @@
         <!-- Dirección de la empresa , text, obligatorio -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
-                <label for="direccion_emp" class="form-label">@lang('datosempresa.dir_postal')</label>
+                <label for="direccion_emp" class="form-label">Direccón postal</label>
                 <input class="form-control" name="direccion_emp" value="{{old('direccion_emp')}}" id="direccion_emp">
             </div>
 
@@ -96,17 +125,22 @@
             <h3 class="inline">Sector productivo</h3>
             <div class="row ml-6">
                 <div class="form-check col-2">
-                    <label class="form-check-label" for="id_primario">Primario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="primario" @if(is_array(old('sector')) && in_array('primario', old('sector'))) checked @endif id="id_primario">
+                    <input class="form-check-input" type="radio" name="sector" value="primario" {{ (old('sector') == "primario") ? "checked" : ""}} id="id_primario">
+                    <label class="form-check-label" for="id_primario">
+                        Primario
+                    </label>
                 </div>
                 <div class="form-check col-2">
-                    <label class="form-check-label" for="id_secundario">Secundario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="secundario" @if(is_array(old('sector')) && in_array('secundario', old('sector'))) checked @endif id="id_secundario">
+                    <input class="form-check-input" type="radio" name="sector" value="secundario" {{ (old('sector') == "secundario") ? "checked" : ""}} id="id_secundario">
+                    <label class="form-check-label" for="id_secundario">
+                        Secundario
+                    </label>
                 </div>
                 <div class="form-check col-2">
-                    <label class="form-check-label" for="id_terciario">Terciario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="terciario" @if(is_array(old('sector')) && in_array('terciario', old('sector'))) checked @endif id="id_terciario">
-
+                    <input class="form-check-input" type="radio" name="sector" value="terciario" {{ (old('sector') == "terciario") ? "checked" : ""}} id="id_terciario">
+                    <label class="form-check-label" for="id_terciario">
+                        Terciario
+                    </label>
                 </div>
             </div>
         </div>
@@ -156,11 +190,14 @@
             </div>
 
         </div>
-    </fieldset>
 
 
-    <fieldset class="border p-2">
-        <legend>Centro de trabajo</legend>
+
+    </div>
+
+
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+
 
         <!-- Nombre del centro de trabajo, text, obligatorio -->
         <div class="mb-3 col-6">
@@ -267,12 +304,7 @@
             <input class="form-control" name="horario_ct" value="{{old('horario_ct')}}" id="horario_ct">
         </div>
 
-    </fieldset>
 
-
-    <!-- Tutores -->
-    <fieldset class="border p-2">
-        <legend>Tutores</legend>
 
         <!-- Coordinador de FCT, text, opcional -->
         <div class="row align-items-start">
@@ -316,38 +348,16 @@
 
         <!-- Lugar de trabajo del tutor, Supongo que se refiere al centro de trabajo -->
 
-    </fieldset>
 
 
-    <div class="row">
-        <!-- Población en que se firma -->
-        <div class="form-floating mb-3">
-            <label for="lugar_firma" class="form-label">Firmado en: </label>
-            <input class="form-control" name="lugar_firma" value="{{old('lugar_firma')}}" id="lugar_firma">
-        </div>
-
-        <!-- Fecha del envío de estos datos -->
-        <div class="form-floating mb-3">
-            <label for="fecha_firma" class="form-label">, el </label>
-            <input class="form-control" type="date" name="fecha_firma" value="{{old('fecha_firma')}}" id="fecha_firma">
-        </div>
-    </div>
-
-
-    <!-- Comentarios sobre las prácticas -->
-    <div class="mb-3">
-        <label for="comentarios" class="form-label">Comentarios</label>
-        <textarea class="form-control" name="comentarios" id="comentarios" rows="3">{{old('comentarios')}}</textarea>
     </div>
 
 
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+        Tab 3 content
+    </div>
+</div>
+<!-- Tabs content -->
 </form>
-<datalist id="listatelefonos">
-    <option value="(154) 215-4468">
-    <option value="(154) 254-7863">
-    <option value="(146) 123-7821">
-    <option value="(112) 645-4565">
-</datalist>
 @endsection

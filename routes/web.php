@@ -28,6 +28,8 @@ Route::view('/contact' ,'contact')->name('contact');
 Route::view('/cacheadas', 'contact');
 
 Route::view('/check','checkbox_old');
+Route::view('/tabs','tabs');
+
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');

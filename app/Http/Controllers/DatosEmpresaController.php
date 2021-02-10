@@ -14,21 +14,21 @@ class DatosEmpresaController extends Controller {
         request()->validate([
             'nombre_emp' => "required|min:3|max:40",
             'cif' => "required",
-   //         'email_emp' => "required|email|unique:empresas,email_emp,". $this->id,
+            //         'email_emp' => "required|email|unique:empresas,email_emp,". $this->id,
             'cp_emp' => "digits:5",
             'sector' => "in:primario,secundario,terciario",
             'titularidad' => "in:publica,privada",
             'cp_ct' => 'digits:5',
-       //     'jornada' => "in:continua,partida",
-       //     'fecha_firma' => 'date|max:'.date('Y-M-D'),
+                //     'jornada' => "in:continua,partida",
+                //     'fecha_firma' => 'date|max:'.date('Y-M-D'),
+                ],
+                [
+                    'nombre_emp.required' => 'Haz el favor de teclear de indicar el nombre de la empresa', 
         ]);
 
 
 //        // Enviar email
 //        Mail::to('email_emp')-send(new DatosEmpresaController);
-       
-        
-        
         // return request('email_emp');   // no necesita Request
         // return request(['email_emp','cif']);
         // return $request;//devuelve un JSON 
