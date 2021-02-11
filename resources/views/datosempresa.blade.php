@@ -91,7 +91,10 @@
         </div>
 
 
-        <!-- Sector productivo, radio, obligatorio -->
+        <!-- Sector productivo, checkbox, obligatorio.- Realmente es un radiobutton pero se fuerza a checkbox para 
+        incluir un ejemplo de como se incluyen los old() values en un checkbox cuando falla la validación
+        Se presentan tres formas ligeramente diferentes de resolver el problema de los valores old().
+        -->
         <div class="bg-ligth">
             <h3 class="inline">Sector productivo</h3>
             <div class="row ml-6">
@@ -101,12 +104,11 @@
                 </div>
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_secundario">Secundario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="secundario" @if(is_array(old('sector')) && in_array('secundario', old('sector'))) checked @endif id="id_secundario">
+                    <input class="form-check-input" type="checkbox" name="sector[]" value="secundario" {{ (is_array(old('sector')) and in_array('secundario', old('sector'))) ? ' checked' : '' }} id="id_secundario">
                 </div>
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_terciario">Terciario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="terciario" @if(is_array(old('sector')) && in_array('terciario', old('sector'))) checked @endif id="id_terciario">
-
+                    <input class="form-check-input" type="checkbox" name="sector[]" value="terciario" {{ (is_array(old('sector')) and in_array('terciario', old('sector'))) ? ' checked' : '' }} id="id_terciario">
                 </div>
             </div>
         </div>
