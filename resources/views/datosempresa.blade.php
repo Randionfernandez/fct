@@ -100,24 +100,44 @@
             <div class="row ml-6">
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_primario">Primario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="primario" @if(is_array(old('sector')) && in_array('primario', old('sector'))) checked @endif id="id_primario">
+                    <input class="form-check-input" type="radio" name="sector" value="primario" {{ (old('sector') == "primario") ? "checked" :""}} id="id_primario">
                 </div>
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_secundario">Secundario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="secundario" {{ (is_array(old('sector')) and in_array('secundario', old('sector'))) ? ' checked' : '' }} id="id_secundario">
+                    <input class="form-check-input" type="radio" name="sector" value="secundario" {{ (old('sector') == "secundario") ? "checked" : ""}} id="id_secundario">
                 </div>
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_terciario">Terciario</label>
-                    <input class="form-check-input" type="checkbox" name="sector[]" value="terciario" {{ (is_array(old('sector')) and in_array('terciario', old('sector'))) ? ' checked' : '' }} id="id_terciario">
+                    <input class="form-check-input" type="radio" name="sector" value="terciario" {{ (old('sector') == "terciario") ? "checked" : ""}} id="id_terciario">
                 </div>
             </div>
         </div>
 
 
+        <!--   Ejemplo si el input 'sector' fuese un checkox  
+        <div class="bg-ligth">
+           <h3 class="inline">Sector productivo</h3>
+           <div class="row ml-6">
+               <div class="form-check col-2">
+                   <label class="form-check-label" for="id_primario">Primario</label>
+                   <input class="form-check-input" type="radio" name="sector" value="primario" @if(is_array(old('sector')) && in_array('primario', old('sector'))) checked @endif id="id_primario">
+               </div>
+               <div class="form-check col-2">
+                   <label class="form-check-label" for="id_secundario">Secundario</label>
+                   <input class="form-check-input" type="radio" name="sector" value="secundario" {{ (is_array(old('sector')) and in_array('secundario', old('sector'))) ? ' checked' : '' }} id="id_secundario">
+               </div>
+               <div class="form-check col-2">
+                   <label class="form-check-label" for="id_terciario">Terciario</label>
+                   <input class="form-check-input" type="radio" name="sector" value="terciario" {{ (is_array(old('sector')) and in_array('terciario', old('sector'))) ? ' checked' : '' }} id="id_terciario">
+               </div>
+           </div>
+               </div> -->
+
+
         <!-- Actividad principal, texto -->
         <div class="mb-3">
-            <label for="actividad_emp" class="form-label">Actividad principal</label>
-            <input class="form-control"  name="actividad_emp" value="{{old('actividad_emp')}}" id="actividad_emp" placeholder="Actividad principal">
+            <label for="actividad_principal" class="form-label">Actividad principal</label>
+            <input class="form-control"  name="actividad_principal" value="{{old('actividad_principal')}}" id="actividad_principal" placeholder="Actividad principal">
         </div>
 
 
@@ -144,7 +164,7 @@
         <div class="row align-items-start">
             <div class="mb-3 col-6">
                 <label for="nombre_representante_em" class="form-label">Nombre</label>
-                <input class="form-control" name="nombre_representante_emp" value="{{old('nombre_representante_emp')}}" id="nombre_representante_emp" aria-describedby="HelpBlock">
+                <input class="form-control" name="representante_nombre" value="{{old('representante_nombre')}}" id="representante_nombre" aria-describedby="HelpBlock">
                 <div id="HelpBlock" class="form-text">
                     Nombre y apellidos del representante de la empresa.
                 </div>
@@ -153,8 +173,8 @@
 
             <!-- nif del representante de la empresa, obligatorio -->
             <div class="mb-3 col-2">
-                <label for="nif_representante_emp" class="form-label">NIF</label>
-                <input class="form-control" name="nif_representante_emp" value="{{old('nif_representante_emp')}}" id="nif_representante_em">
+                <label for="representante_nif" class="form-label">NIF</label>
+                <input class="form-control" name="representante_nif" value="{{old('representante_nif')}}" id="representante_nif">
             </div>
 
         </div>
@@ -201,8 +221,8 @@
 
             <!-- Número de trabajadores -->
             <div class="mb-3 col-4">
-                <label for="num_trabajadores_ct" class="form-label">Número de trabajadores</label>
-                <input class="form-control" name="num_trabajadores_ct" value="{{old('num_trabajadores_ct')}}" id="num_trabajadores_ct">
+                <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
+                <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores">
             </div>
         </div>
 
@@ -299,8 +319,8 @@
         <!-- Tutor de FCT, text -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
-                <label for="nombre_tutor_fct" class="form-label">Nombre del tutor</label>
-                <input class="form-control" name="nombre_tutor_fct" value="{{old('nombre_tutor_fct')}}" id="nombre_tutor_fct"  aria-describedby="HelpTutor">
+                <label for="nombre_tutor_emp" class="form-label">Nombre del tutor</label>
+                <input class="form-control" name="nombre_tutor_emp" value="{{old('nombre_tutor_emp')}}" id="nombre_tutor_emp"  aria-describedby="HelpTutor">
                 <div id="HelTutor" class="form-text">
                     Nombre y apellidos del tutor de FCT.
                 </div>
@@ -309,14 +329,16 @@
 
             <!-- nif del tutor de FCT -->
             <div class="mb-3 col-2">
-                <label for="nif_tutor_fct" class="form-label">NIF del tutor</label>
-                <input class="form-control" type="text" name="nif_tutor_fct" value="{{old('nif_tutor_fct')}}" id="nif_tutor_fct">
+                <label for="nif_tutor_emp" class="form-label">NIF del tutor</label>
+                <input class="form-control" type="text" name="nif_tutor_emp" value="{{old('nif_tutor_emp')}}" id="nif_tutor_emp">
             </div>
 
         </div>
 
 
-        <!-- Lugar de trabajo del tutor, Supongo que se refiere al centro de trabajo -->
+        <!-- Lugar de trabajo del tutor, Supongo que se refiere al centro de trabajo
+        Asumimos que pertenece al mismo centro que el descrito por el formulario más arriba
+        -->
 
     </fieldset>
 

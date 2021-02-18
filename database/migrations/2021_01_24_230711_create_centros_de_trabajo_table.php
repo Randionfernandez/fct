@@ -14,21 +14,21 @@ class CreateCentrosDeTrabajoTable extends Migration {
     public function up() {
         Schema::create('centros_de_trabajo', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('direccion');
-            $table->string('poblacion');
-            $table->char('cp', 5);
-            $table->string('actividad');
-            $table->string('num_trabajadores');
-            $table->string('email');
-            $table->string('telefono1');
-            $table->string('telefono2')->nullable();
-            $table->enum('jornada', ['continua', 'partida']);
-            $table->string('horario');
-            $table->string('nombre_coordinador_fct')->nullable()->comment('Puede suprimirse, asumiendo que todo coordinador figure en tabla de tutores');
-            $table->string('nif_coordinador_fct')->nullable()->comment('Puede existir a nivel de empresa o de centro de trabajo');
-            $table->string('comentarios')->nullable();
             $table->timestamps();
+            $table->string('nombre_ct', 35);
+            $table->string('direccion_ct', 40)->nullable();
+            $table->string('poblacion_ct', 40)->nullable();
+            $table->char('cp_ct', 5)->nullable();
+            $table->string('actividad_ct', 35)->nullable();
+            $table->string('email_ct', 35);
+            $table->string('telefono1_ct', 12);
+            $table->string('telefono2_ct', 12)->nullable();
+            $table->string('fax_ct', 12)->nullable();
+            $table->enum('jornada', ['continua', 'partida']);
+            $table->string('horario_ct', 15);
+
+            $table->unsignedBigInteger('id_emp');
+            $table->foreign('id_emp')->references('id')->on('empresas');
         });
     }
 
