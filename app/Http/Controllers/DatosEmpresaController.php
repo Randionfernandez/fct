@@ -76,7 +76,6 @@ class DatosEmpresaController extends Controller {
                         'sector' => $i['sector'],
                         'actividad_principal' => $i['actividad_principal'],
                         'titularidad' => $i['titularidad'],
-                        'num_trabajadores' => $i['num_trabajadores'],
                         'representante_nombre' => $i['representante_nombre'],
                         'representante_nif' => $i['representante_nif'],
                         'nombre_coordinador_fct' => $i['nombre_coordinador_fct'],
@@ -86,12 +85,13 @@ class DatosEmpresaController extends Controller {
                         'comentarios' => $i['comentarios']]);
 
             // Inserción del centro de trabajo usando Query Builder
-            $id_ct = DB::table('centros_de_trabajo')->insertGetId([
+            DB::table('centros_de_trabajo')->insertGetId([
                 'nombre_ct' => $i['nombre_ct'],
                 'direccion_ct' => $i['direccion_ct'],
                 'poblacion_ct' => $i['poblacion_ct'],
                 'cp_ct' => $i['cp_ct'],
                 'actividad_ct' => $i['actividad_ct'],
+                'num_trabajadores' => $i['num_trabajadores'],
                 'email_ct' => $i['email_ct'],
                 'telefono1_ct' => $i['telefono1_ct'],
                 'telefono2_ct' => $i['telefono2_ct'],
@@ -105,7 +105,7 @@ class DatosEmpresaController extends Controller {
             $tutor = Tutor::create([
                         'nombre_tutor_emp' => $i['nombre_tutor_emp'],
                         'nif_tutor_emp' => $i['nif_tutor_emp'],
-                        'id_ct' => $id_ct,
+                        'id_ct' => $id_emp,
             ]);
 
             $tutor->save();

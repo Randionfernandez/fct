@@ -19,12 +19,12 @@ class CreateTutoresTable extends Migration {
             $table->string('nif_tutor_emp', 12);
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_ct');
-            $table->foreign('id_ct')->references('id')->on('centros_de_trabajo');
+            $table->unsignedBigInteger('id_emp');
+            $table->foreign('id_emp')->references('id')->on('empresas');
         });
 
 
-        DB::statement("comment on table tutores is 'Plantear si un tutor debe vincularse a la empresa y no a un centro de trabajo'");
+        DB::statement("comment on table tutores is 'Según Gestib, el tutor debe vincularse a la empresa y no a un centro de trabajo'");
     }
 
     /**
