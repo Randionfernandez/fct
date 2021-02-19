@@ -13,7 +13,7 @@
 @endif
 
 
-<form method="post">
+<form action='/datosempresa' method="post">
     @csrf
     <fieldset class="border p-2">
         <legend>Datos de empresa</legend>
@@ -96,7 +96,7 @@
         Se presentan tres formas ligeramente diferentes de resolver el problema de los valores old().
         -->
         <div class="bg-ligth">
-            <h3 class="inline">Sector productivo</h3>
+            <h6 class="inline">Sector productivo</h6>
             <div class="row ml-6">
                 <div class="form-check col-2">
                     <label class="form-check-label" for="id_primario">Primario</label>
@@ -143,6 +143,7 @@
 
         <!-- Titularidad, -->
         <div class="row align-items-start">
+            <h6 class="inline">Titularidad</h6>
             <div class="form-check col-2">
                 <input class="form-check-input" type="radio" name="titularidad" value="publica" {{ (old('titularidad') == "publica") ? "checked" : ""}} id="id_publica">
                 <label class="form-check-label" for="id_publica">
@@ -194,7 +195,7 @@
         <!-- Dirección del centro de trabajo -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
-                <label for="direccion_ct" class="form-label">Direccón postal</label>
+                <label for="direccion_ct" class="form-label">{{__('datosempresa.dir_postal')}}</label>
                 <input class="form-control" name="direccion_ct" value="{{old('direccion_ct')}}" id="direccion_ct">
             </div>
 
@@ -212,22 +213,7 @@
         </div>
 
 
-        <!-- Actividad, text, opcional? -->
-        <div class="row align-items-start">
-            <div class="mb-3 col-6">
-                <label for="actividad_ct" class="form-label">Actividad principal</label>
-                <input class="form-control" name="actividad_ct" value="{{old('actividad_ct')}}" id="actividad_ct">
-            </div>
 
-            <!-- Número de trabajadores -->
-            <div class="mb-3 col-4">
-                <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
-                <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores">
-            </div>
-        </div>
-
-
-        <!-- Email, email, obliglatorio -->
         <div class="row align-items-start">
             <!-- Email, email, obligatorio -->
             <div class="mb-3 col-auto">
@@ -258,6 +244,37 @@
         </div>
 
 
+
+        <div class="row align-items-start">
+            <!-- Actividad en ct, text, opcional -->
+            <div class="mb-3 col-6">
+                <label for="actividad_ct" class="form-label">Actividad principal</label>
+                <input class="form-control" name="actividad_ct" value="{{old('actividad_ct')}}" id="actividad_ct">
+            </div>
+
+            <!-- Número de trabajadores -->
+            <div class="mb-3 col-2">
+                <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
+                <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores">
+            </div>
+
+            <div class="mb-3 col-2">
+                <label for="jornada" class="form-label">Tipo de jornada</label>
+                <select class="form-control" name='jornada' id="jornada">
+                    <option value="continua" @if (old('jornada') === 'continua') selected @endif>Continua</option>
+                    <option value="partida" @if (old('jornada') === 'partida') selected @endif>Partida</option>
+                </select>
+            </div>
+
+            <!-- Horario, text, opcional -->
+            <div class="mb-3 col-md-2">
+                <label for="horario_ct" class="form-label">Horario</label>
+                <input class="form-control" name="horario_ct" value="{{old('horario_ct')}}" id="horario_ct">
+            </div>
+        </div>
+
+
+
         <!-- Tipo de jornada,  radio,obligatorio 
         <div class="form-check form-check-inline">
             <label class="form-check-label" for="jornadacontinua">
@@ -274,21 +291,6 @@
 
         </div>
         -->
-        <div class="mb-3 col-4">
-            <label for="jornada" class="form-label">Tipo de jornada</label>
-            <select class="form-control" name='jornada' id="jornada">
-                <option value="continua" @if (old('jornada') === 'continua') selected @endif>Continua</option>
-                <option value="partida" @if (old('jornada') === 'partida') selected @endif>Partida</option>
-            </select>
-        </div>
-
-
-        <!-- Horario, text, opcional -->
-        <div class="mb-3 col-md-2">
-            <label for="horario_ct" class="form-label">Horario</label>
-            <input class="form-control" name="horario_ct" value="{{old('horario_ct')}}" id="horario_ct">
-        </div>
-
     </fieldset>
 
 
@@ -337,10 +339,20 @@
 
 
         <!-- Lugar de trabajo del tutor, Supongo que se refiere al centro de trabajo
-        Asumimos que pertenece al mismo centro que el descrito por el formulario más arriba
+        Asumimos que pertenece al mismo centro que el descrito por el formulario más arriba.
+        Según Gestib, el tutor se vincula a la empresa y no al centro de trabajo. No incluiremos este campo
+        que figura en el formulario de referencia.
         -->
 
     </fieldset>
+
+
+
+    <!-- Comentarios sobre las prácticas -->
+    <div class="mb-3">
+        <label for="comentarios" class="form-label">Comentarios</label>
+        <textarea class="form-control" name="comentarios" id="comentarios" rows="2">{{old('comentarios')}}</textarea>
+    </div>
 
 
     <div class="row">
@@ -357,12 +369,6 @@
         </div>
     </div>
 
-
-    <!-- Comentarios sobre las prácticas -->
-    <div class="mb-3">
-        <label for="comentarios" class="form-label">Comentarios</label>
-        <textarea class="form-control" name="comentarios" id="comentarios" rows="3">{{old('comentarios')}}</textarea>
-    </div>
 
 
 

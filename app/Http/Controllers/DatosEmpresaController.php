@@ -3,45 +3,75 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \Illuminate\Support\Facades\Mail;
+//use \Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tutor;
 
+/**
+ *
+ * 
+ *  Creado con php artisan make:controller DatosEmpresaController --resource
+ */
 class DatosEmpresaController extends Controller {
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index() {
+        //
+
+        return redirect('/datosempresa/create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        return view('datosempresa');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request) {
 
 
-// Validación de ejemplo, pero incompleta, de los datos de empresa obtenidos del formulario correspondiente
-        request()->validate([
-            'nombre_emp' => "required|unique:empresas|min:3|max:40",
-            'cif' => "required",
-            'direccion_emp' => 'required|string|max:40',
-            'poblacion_emp' => 'required',
-            //'email_emp' => "required|email|unique:empresas,email_emp,". $this->id,
-            'email_emp' => "required|email|unique:empresas",
-            'cp_emp' => "digits:5",
-            'sector' => "in:primario,secundario,terciario",
-            'actividad_principal' => "required",
-            'titularidad' => "in:publica,privada",
-            'num_trabajadores' => 'integer',
-            'representante_nombre' => 'required',
-            'representante_nif' => 'required',
-            'nombre_ct' => 'required',
-            'cp_ct' => "nullable|digits:5",
-            'email_ct' => 'required',
-            'telefono1_ct' => 'required',
-            'jornada' => "in:continua,partida",
-            'nombre_tutor_emp' => 'required',
-            'nif_tutor_emp' => 'required',
-            'lugar_firma' => "required'|string|max:35",
-            'fecha_firma' => 'date|max:' . date('Y-M-D'),
-                ],
-                [
-                    'nombre_emp.required' => 'Haz el favor de teclear el nombre de la empresa',
-        ]);
 
-
+        // Validación de ejemplo, pero incompleta, de los datos de empresa obtenidos del formulario correspondiente
+//        request()->validate([
+//            'nombre_emp' => "required|unique:empresas|min:3|max:40",
+//            'cif' => "required",
+//            'direccion_emp' => 'required|string|max:40',
+//            'poblacion_emp' => 'required',
+//            //'email_emp' => "required|email|unique:empresas,email_emp,". $this->id,
+//            'email_emp' => "required|email|unique:empresas",
+//            'cp_emp' => "digits:5",
+//            'sector' => "in:primario,secundario,terciario",
+//            'actividad_principal' => "required",
+//            'titularidad' => "in:publica,privada",
+//            'num_trabajadores' => 'integer',
+//            'representante_nombre' => 'required',
+//            'representante_nif' => 'required',
+//            'nombre_ct' => 'required',
+//            'cp_ct' => "nullable|digits:5",
+//            'email_ct' => 'required',
+//            'telefono1_ct' => 'required',
+//            'jornada' => "in:continua,partida",
+//            'nombre_tutor_emp' => 'required',
+//            'nif_tutor_emp' => 'required',
+//            'lugar_firma' => "required'|string|max:35",
+//            'fecha_firma' => 'date|max:' . date('Y-M-D'),
+//                ],
+//                [
+//                    'nombre_emp.required' => 'Haz el favor de teclear el nombre de la empresa',
+//        ]);
 //        Enviar email
 //        Mail::to('email_emp')-send(new DatosEmpresaController);
 //        Estás invitado a probar sucesivamente los siguientes return
@@ -52,11 +82,11 @@ class DatosEmpresaController extends Controller {
         // return $request->get('email_emp');
         // return $request;
 
-
         $i = $request->all();
 
+
         DB::Transaction(function() {
-            global $i;
+           global $i;
             // Inserción usando sql raw; dependiente del SGBD que se use
 //            DB::insert('insert into empresas ( nombre_emp, cif, direccion_emp, poblacion_emp, cp_emp, telefono1_emp, telefono2_emp, fax_emp, email_emp, sector, ' .
 //                    ' actividad_principal, titularidad, num_trabajadores, representante_nombre, representante_nif, nombre_coordinador_fct, nif_coordinador_fct, comentarios) ' .
@@ -64,7 +94,8 @@ class DatosEmpresaController extends Controller {
 //                    ' :actividad_principal, :titularidad, :num_trabajadores, :representante_nombre, :representante_nif, :nombre_coordinador_fct, :nif_coordinador_fct, :comentarios)',
 
             $id_emp = DB::table('empresas')->insertGetId(
-                    ['nombre_emp' => $i['nombre_emp'],
+                    /// ['nombre_emp' => $i['nombre_emp'],
+                    ['nombre_emp' => $request->input('nombre_emp'),
                         'cif' => $i['cif'],
                         'direccion_emp' => $i['direccion_emp'],
                         'poblacion_emp' => $i['poblacion_emp'],
@@ -105,13 +136,54 @@ class DatosEmpresaController extends Controller {
             $tutor = Tutor::create([
                         'nombre_tutor_emp' => $i['nombre_tutor_emp'],
                         'nif_tutor_emp' => $i['nif_tutor_emp'],
-                        'id_ct' => $id_emp,
+                        'id_emp' => $id_emp,
             ]);
 
             $tutor->save();
         });
 
         return "La transacción se realizó con éxito";
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id) {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id) {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id) {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id) {
+        //
     }
 
 }

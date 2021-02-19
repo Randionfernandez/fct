@@ -5,10 +5,10 @@
         <group>
             <file>file:/var/www/laravel/fct/app/Mail/DatosEmpresaRecibidos.php</file>
             <file>file:/var/www/laravel/fct/resources/views/datosempresa.blade.php</file>
-            <file>file:/var/www/laravel/fct/app/Models/Tutor.php</file>
-            <file>file:/var/www/laravel/fct/app/Models/User.php</file>
+            <file>file:/var/www/laravel/fct/database/migrations/2021_01_24_230711_create_centros_de_trabajo_table.php</file>
             <file>file:/var/www/laravel/fct/app/Http/Controllers/DatosEmpresaController.php</file>
-            <file>file:/var/www/laravel/fct/app/Models/Centro_de_trabajo.php</file>
+            <file>file:/var/www/laravel/fct/database/migrations/2021_01_24_231014_create_tutores_table.php</file>
+            <file>file:/var/www/laravel/fct/routes/web.php</file>
         </group>
     </open-files>
 </project-private>
