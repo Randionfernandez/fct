@@ -13,7 +13,7 @@
 @endif
 
 
-<form action='/datosempresa' method="post">
+<form method="post">
     @csrf
     <fieldset class="border p-2">
         <legend>Datos de empresa</legend>

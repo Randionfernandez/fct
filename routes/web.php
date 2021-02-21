@@ -16,11 +16,15 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('/', function() {
-    return redirect('/datosempresa/create');
-});
+//Route::get('/', function() {
+//    return redirect('/datosempresa/create');
+//});
 
-Route::resource('/datosempresa', DatosEmpresaController::class);
+Route::get('/',[App\Http\Controllers\DatosEmpresaController::class,'create']);
+Route::post('/',[App\Http\Controllers\DatosEmpresaController::class,'store']);
+
+
+//Route::resource('/datosempresa', DatosEmpresaController::class);
 
 //Route::view('/activar','activarenlaces');
 

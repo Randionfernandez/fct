@@ -13,7 +13,7 @@ class Tutor extends Model {
     protected $fillable = [
         'nombre_tutor_emp',
         'nif_tutor_emp',
-        'centro_de_trabajo',
+        'id_emp',
     ];
 
 }
