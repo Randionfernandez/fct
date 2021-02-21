@@ -21,8 +21,8 @@ class DatosEmpresaRequest extends FormRequest {
      * @return array
      */
     public function rules() {
-        return [
-            'nombre_emp' => "required|unique:empresas|min:3|max:40",
+        return [      //formas de indicar las rules: matricial o string única
+            'nombre_emp' => ['required','unique:empresas','min:3','max:40'],
             'cif' => "required",
             'direccion_emp' => 'required|string|max:40',
             'poblacion_emp' => 'required',

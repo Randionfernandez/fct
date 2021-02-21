@@ -140,6 +140,14 @@
             <input class="form-control"  name="actividad_principal" value="{{old('actividad_principal')}}" id="actividad_principal" placeholder="Actividad principal">
         </div>
 
+        <!-- Número de trabajadores -->
+        <div class="mb-3 col-2">
+            <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
+            <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores" aria-describedby="HelpEmpleados">
+            <div id="HelpEmpleados" class="form-text">
+                Número aproximado de empleados en la empresa.
+            </div>
+        </div>
 
         <!-- Titularidad, -->
         <div class="row align-items-start">
@@ -250,12 +258,6 @@
             <div class="mb-3 col-6">
                 <label for="actividad_ct" class="form-label">Actividad principal</label>
                 <input class="form-control" name="actividad_ct" value="{{old('actividad_ct')}}" id="actividad_ct">
-            </div>
-
-            <!-- Número de trabajadores -->
-            <div class="mb-3 col-2">
-                <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
-                <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores">
             </div>
 
             <div class="mb-3 col-2">

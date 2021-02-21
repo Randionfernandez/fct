@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
+
 /*
   |--------------------------------------------------------------------------
   | Web Routes
@@ -20,20 +21,13 @@ use Illuminate\Http\Request;
 //    return redirect('/datosempresa/create');
 //});
 
-Route::get('/',[App\Http\Controllers\DatosEmpresaController::class,'create']);
-Route::post('/',[App\Http\Controllers\DatosEmpresaController::class,'store']);
+//Route::get('/',[App\Http\Controllers\DatosEmpresaController::class,'create']);
+//Route::post('/',[App\Http\Controllers\DatosEmpresaController::class,'store']);
 
+Route::get('/','TutoresController@create');
+Route::resource('/datosempresa', DatosEmpresaController::class);
 
-//Route::resource('/datosempresa', DatosEmpresaController::class);
-
-//Route::view('/activar','activarenlaces');
-
-Route::view('/portfolio', 'portfolio')->name('portfolio');
-Route::view('/contact', 'contact')->name('contact');
-Route::view('/cacheadas', 'contact');
-
-Route::view('/check', 'checkbox_old');
-Route::view('/tabs', 'tabs');
+Route::resource('/tutores', TutoresController::class)->parameters(['tutores'=>'tutor'])->names(['create'=>'tutores.crear']);
 
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

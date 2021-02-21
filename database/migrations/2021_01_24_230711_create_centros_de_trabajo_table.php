@@ -20,7 +20,6 @@ class CreateCentrosDeTrabajoTable extends Migration {
             $table->string('poblacion_ct', 40)->nullable();
             $table->char('cp_ct', 5)->nullable();
             $table->string('actividad_ct', 35)->nullable();
-            $table->integer('num_trabajadores');
             $table->string('email_ct', 35);
             $table->string('telefono1_ct', 12);
             $table->string('telefono2_ct', 12)->nullable();

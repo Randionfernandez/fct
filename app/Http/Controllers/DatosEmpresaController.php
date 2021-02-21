@@ -45,9 +45,9 @@ class DatosEmpresaController extends Controller {
 
 //        Enviar email
 //        Mail::to('email_emp')-send(new DatosEmpresaController);
-        
+
         DB::Transaction(function() {
-              $i = request();
+            $i = request();
 
             $id_emp = DB::table('empresas')->insertGetId(
                     ['nombre_emp' => $i['nombre_emp'],
@@ -61,6 +61,7 @@ class DatosEmpresaController extends Controller {
                         'email_emp' => $i['email_emp'],
                         'sector' => $i['sector'],
                         'actividad_principal' => $i['actividad_principal'],
+                        'num_trabajadores' => $i['num_trabajadores'],
                         'titularidad' => $i['titularidad'],
                         'representante_nombre' => $i['representante_nombre'],
                         'representante_nif' => $i['representante_nif'],
@@ -77,7 +78,6 @@ class DatosEmpresaController extends Controller {
                 'poblacion_ct' => $i['poblacion_ct'],
                 'cp_ct' => $i['cp_ct'],
                 'actividad_ct' => $i['actividad_ct'],
-                'num_trabajadores' => $i['num_trabajadores'],
                 'email_ct' => $i['email_ct'],
                 'telefono1_ct' => $i['telefono1_ct'],
                 'telefono2_ct' => $i['telefono2_ct'],
