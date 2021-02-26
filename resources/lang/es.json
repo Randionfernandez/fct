@@ -30,5 +30,7 @@
     "If you did not receive the email": "Si no has recibido el email",
     "click here to request another": "pulsa aquí para que te enviemos otro",
     "All rights reserved.":  "Todos los derechos reservados.",
-    "titulo_datos_emp": "Datos iniciales para nuevo Acuerdo"
+    "titulo_datos_emp": "Datos iniciales para nuevo Acuerdo",
+    "Denominacion": "Denominación de la empresa",
+    "tipo_doc": "Tipo de documento"
 }

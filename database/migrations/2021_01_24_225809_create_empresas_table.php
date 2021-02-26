@@ -38,6 +38,8 @@ class CreateEmpresasTable extends Migration {
             $table->string('lugar_firma', 35)->comment('Es posible que se elimine, pues el lugar que interesa es el del Acuerdo');
             $table->date('fecha_firma')->comment('Es posible que se elimine, pues la fecha que interesa es el del Acuerdo');
             $table->text('comentarios')->nullable();
+            
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -48,7 +50,9 @@ class CreateEmpresasTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('empresas');
+        
+        //Schema::dropIfExists('empresas');
+        Schema::dropSoftDeletes();
     }
 
 }

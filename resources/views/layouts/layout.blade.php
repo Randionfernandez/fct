@@ -10,7 +10,7 @@
 
         <title>FCT</title>
     </head>
-    <body>
+    <body class="bg-body">
         @section('header')<!-- comment -->
         <div class="row">
             <div>Esto es la cabecera</div>

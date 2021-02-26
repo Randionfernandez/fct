@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Centro_de_trabajo extends Model {
 
     use HasFactory;
+    use \Illuminate\Database\Eloquent\SoftDeletes;
 
+    protected $dates = ['Deleted_at'];
     protected $fillable = [
         'nombre',
         'direccion',
@@ -25,6 +27,10 @@ class Centro_de_trabajo extends Model {
         'nif_coordinador_fct',
         'comentarios',
     ];
+
+    public function empresa() {
+        return $this->belongsTo(Empresa::class);
+    }
 
 }
 

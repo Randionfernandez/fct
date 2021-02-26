@@ -13,7 +13,7 @@
 @endif
 
 
-<form method="post">
+<form method="post" action="{{route('datosempresa.store')}}">
     @csrf
     <fieldset class="border p-2">
         <legend>Datos de empresa</legend>
@@ -65,8 +65,10 @@
             <!-- Email, email, obligatorio -->
             <div class="mb-3 col-auto">
                 <label for="email_emp" class="form-label">E-mail</label>
-                <input class="form-control" type="email" name="email_emp" value="{{old('email_emp')}}" id="email_emp" placeholder="name@example.com" aria-describedby="HelpEmail_emp">
-                <div id="HelpEmail_emp" class="form-text">Nunca compartiremos su email con otras personas o empresas.</div>
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                    <input class="form-control" type="email" name="email_emp" value="{{old('email_emp')}}" id="email_emp" placeholder="name@example.com" aria-describedby="inputGroupPrepend">
+                </div>
             </div>
 
             <!-- Teléfono 1, obligatorio -->
@@ -226,8 +228,10 @@
             <!-- Email, email, obligatorio -->
             <div class="mb-3 col-auto">
                 <label for="email_ct" class="form-label">E-mail</label>
-                <input class="form-control" type="email" name="email_ct" value="{{old('email_ct')}}" id="email_ct" placeholder="name@example.com">
-                <div id="emailHelp" class="form-text">Nunca compartiremos su email con otras personas o empresas.</div>
+                <div class="input-group has-validation">
+                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                    <input class="form-control" type="email" name="email_ct" value="{{old('email_ct')}}" id="email_ct" aria-describedby="inputGroupPrepend2" placeholder="name@example.com">
+                </div>
             </div>
 
             <!-- Teléfono 1, obligatorio -->
@@ -262,7 +266,7 @@
 
             <div class="mb-3 col-2">
                 <label for="jornada" class="form-label">Tipo de jornada</label>
-                <select class="form-control" name='jornada' id="jornada">
+                <select class="form-select" name='jornada' id="jornada">
                     <option value="continua" @if (old('jornada') === 'continua') selected @endif>Continua</option>
                     <option value="partida" @if (old('jornada') === 'partida') selected @endif>Partida</option>
                 </select>

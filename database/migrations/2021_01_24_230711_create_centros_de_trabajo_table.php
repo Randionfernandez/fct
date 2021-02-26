@@ -26,6 +26,9 @@ class CreateCentrosDeTrabajoTable extends Migration {
             $table->string('fax_ct', 12)->nullable();
             $table->enum('jornada', ['continua', 'partida']);
             $table->string('horario_ct', 15);
+            
+            $table->softDeletes();
+            $table->timestamps();
 
             $table->unsignedBigInteger('id_emp');
             $table->foreign('id_emp')->references('id')->on('empresas');

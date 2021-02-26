@@ -4,8 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/var/www/laravel/fct/resources/views/datosempresa.blade.php</file>
+            <file>file:/var/www/laravel/fct/app/Models/Tutor.php</file>
+            <file>file:/var/www/laravel/fct/resources/views/tutores.blade.php</file>
+            <file>file:/var/www/laravel/fct/app/Providers/RouteServiceProvider.php</file>
+            <file>file:/var/www/laravel/fct/app/Providers/AppServiceProvider.php</file>
             <file>file:/var/www/laravel/fct/app/Http/Controllers/DatosEmpresaController.php</file>
             <file>file:/var/www/laravel/fct/app/Http/Requests/DatosEmpresaRequest.php</file>
+            <file>file:/var/www/laravel/fct/routes/web.php</file>
+            <file>file:/var/www/laravel/fct/app/Http/Requests/TuroresRequest.php</file>
+            <file>file:/var/www/laravel/fct/app/Http/Controllers/TutoresController.php</file>
+            <file>file:/var/www/laravel/fct/app/Providers/BroadcastServiceProvider.php</file>
+            <file>file:/var/www/laravel/fct/app/Providers/JetstreamServiceProvider.php</file>
+            <file>file:/var/www/laravel/fct/app/Providers/AuthServiceProvider.php</file>
+            <file>file:/var/www/laravel/fct/database/migrations/2021_01_24_225809_create_empresas_table.php</file>
         </group>
     </open-files>
 </project-private>
