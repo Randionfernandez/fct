@@ -17,6 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss'),
         require('autoprefixer'),
     ]);
+mix.browserSync('fct.local');
 
 if (mix.inProduction()) {
     mix.version();

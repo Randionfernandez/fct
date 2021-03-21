@@ -1,23 +1,15 @@
 @extends('layouts.layout')
 
-@section('contenido')
+@section('content')
 <h1>{{__('datosempresa.titulo_datos_emp')}}</h1>
 
 
-@if($errors->any())
-<ul>
-    @foreach($errors->all() as $error)
-    <li>{{$error}}</li>
-    @endforeach
-</ul>
-@endif
+@include('partials.validation-errors')
 
-
-<form method="post" action="{{route('datosempresa.store')}}">
+<form class="form-group shadow p-3 mb-5 rounded" style="background-color: #fceeec;"  method="post" action="{{route('datosempresa.store')}}">
     @csrf
     <fieldset class="border p-2">
         <legend>Datos de empresa</legend>
-
         <!-- Nombre de la empresa, texto, obligatorio -->
         <div class="row align-items-start">
             <div class="mb-3 col-6">
@@ -97,18 +89,18 @@
         incluir un ejemplo de como se incluyen los old() values en un checkbox cuando falla la validación
         Se presentan tres formas ligeramente diferentes de resolver el problema de los valores old().
         -->
-        <div class="bg-ligth">
+        <div class="form-control">
             <h6 class="inline">Sector productivo</h6>
-            <div class="row ml-6">
-                <div class="form-check col-2">
+            <div class="row ml-10">
+                <div class="form-check col-auto">
                     <label class="form-check-label" for="id_primario">Primario</label>
                     <input class="form-check-input" type="radio" name="sector" value="primario" {{ (old('sector') == "primario") ? "checked" :""}} id="id_primario">
                 </div>
-                <div class="form-check col-2">
+                <div class="form-check col-auto">
                     <label class="form-check-label" for="id_secundario">Secundario</label>
                     <input class="form-check-input" type="radio" name="sector" value="secundario" {{ (old('sector') == "secundario") ? "checked" : ""}} id="id_secundario">
                 </div>
-                <div class="form-check col-2">
+                <div class="form-check col-auto">
                     <label class="form-check-label" for="id_terciario">Terciario</label>
                     <input class="form-check-input" type="radio" name="sector" value="terciario" {{ (old('sector') == "terciario") ? "checked" : ""}} id="id_terciario">
                 </div>
@@ -137,13 +129,13 @@
 
 
         <!-- Actividad principal, texto -->
-        <div class="mb-3">
+        <div class="mb-3 col-auto">
             <label for="actividad_principal" class="form-label">Actividad principal</label>
             <input class="form-control"  name="actividad_principal" value="{{old('actividad_principal')}}" id="actividad_principal" placeholder="Actividad principal">
         </div>
 
         <!-- Número de trabajadores -->
-        <div class="mb-3 col-2">
+        <div class="mb-3 col-md-4">
             <label for="num_trabajadores" class="form-label">Número de trabajadores</label>
             <input class="form-control" type="number" name="num_trabajadores" value="{{old('num_trabajadores')}}" id="num_trabajadores" aria-describedby="HelpEmpleados">
             <div id="HelpEmpleados" class="form-text">
@@ -153,7 +145,7 @@
 
         <!-- Titularidad, -->
         <div class="row align-items-start">
-            <h6 class="inline">Titularidad</h6>
+            <p class="inline">Titularidad</p>
             <div class="form-check col-2">
                 <input class="form-check-input" type="radio" name="titularidad" value="publica" {{ (old('titularidad') == "publica") ? "checked" : ""}} id="id_publica">
                 <label class="form-check-label" for="id_publica">
@@ -369,7 +361,7 @@
         </div>
 
         <!-- Fecha del envío de estos datos -->
-        <div class="form-floating mb-3">
+        <div class="form-floating ml-1">
             <label for="fecha_firma" class="form-label">, el </label>
             <input class="form-control" type="date" name="fecha_firma" value="{{old('fecha_firma')}}" id="fecha_firma">
         </div>
@@ -378,7 +370,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary">Enviar</button>
+    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
 </form>
 <datalist id="listatelefonos">
     <option value="(154) 215-4468">

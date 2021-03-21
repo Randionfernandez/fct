@@ -15,23 +15,24 @@ class CreateTutoresTable extends Migration {
         //  Falta añadir si dió el consetimiento para consultar el fichero de delitos sexuales.
         Schema::create('tutores', function (Blueprint $table) {
             $table->id();
+            $table->softDeletes();
+            $table->timestamps();
+
             $table->string('nif_tutor_emp', 12);
-            $table->enum('documento',['dni', 'nie', 'pasaporte', 'sin espefificar']);
+            //    $table->enum('documento',['dni', 'nie', 'pasaporte', 'sin espefificar']);
+            $table->string('documento')->enum('dni', 'nie', 'pasaporte', 'sin espefificar');
             $table->string('nombre_tutor_emp', 15);
             $table->string('apellido1_tutor_emp', 15);
             $table->string('apellido2_tutor_emp', 15)->nullable();
             $table->string('pais_documento')->nullable();
             $table->string('provincia')->nullable();
             $table->string('municipio')->nullable();
-            $table->enum('status',['activo','inactivo'])->default('activo');
+            $table->enum('status', ['activo', 'inactivo'])->default('activo');
             $table->string('telefono', 12)->nullable();
             $table->string('email')->nullable();
-            
-            $table->softDeletes();
-            $table->timestamps();
-            
+
             $table->string('nombre_emp');
-            //$table->unsignedBigInteger('id_emp');
+            $table->unsignedBigInteger('id_emp');
 //            $table->foreign('id_emp')->references('id')->on('empresas');
         });
 

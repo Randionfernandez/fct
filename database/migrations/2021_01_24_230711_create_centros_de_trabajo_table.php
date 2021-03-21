@@ -15,6 +15,8 @@ class CreateCentrosDeTrabajoTable extends Migration {
         Schema::create('centros_de_trabajo', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            
             $table->string('nombre_ct', 35);
             $table->string('direccion_ct', 40)->nullable();
             $table->string('poblacion_ct', 40)->nullable();
@@ -26,9 +28,6 @@ class CreateCentrosDeTrabajoTable extends Migration {
             $table->string('fax_ct', 12)->nullable();
             $table->enum('jornada', ['continua', 'partida']);
             $table->string('horario_ct', 15);
-            
-            $table->softDeletes();
-            $table->timestamps();
 
             $table->unsignedBigInteger('id_emp');
             $table->foreign('id_emp')->references('id')->on('empresas');
