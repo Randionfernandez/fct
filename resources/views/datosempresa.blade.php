@@ -12,7 +12,7 @@
         <legend>Datos de empresa</legend>
         <!-- Nombre de la empresa, texto, obligatorio -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="nombre_emp" class="form-label">{{__('datosempresa.nombre_emp')}}</label>
                 <input class="form-control" name="nombre_emp" value="{!! old('nombre_emp') !!}" id="nombre_emp">
                 <div>{!! $errors->first('nombre_emp','<small>:message</small>') !!}</div>   
@@ -20,7 +20,7 @@
 
 
             <!-- CIF de la empresa, texto, obligatorio -->
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-3">
                 <label for="cif" class="form-label">CIF</label>
                 <input class="form-control" name="cif" value="{{old('cif')}}" id="cif">
                 {{$errors->first('cif')}}
@@ -31,21 +31,21 @@
 
         <!-- Dirección de la empresa , text, obligatorio -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="direccion_emp" class="form-label">@lang('datosempresa.dir_postal')</label>
                 <input class="form-control" name="direccion_emp" value="{{old('direccion_emp')}}" id="direccion_emp">
             </div>
 
 
             <!-- Población, text, obligatorio -->
-            <div class="mb-3 col-4">
+            <div class="mb-3 col-md-4">
                 <label for="poblacion_emp" class="form-label">Población</label>
                 <input class="form-control" name="poblacion_emp" value="{{old('poblacion_emp')}}" id="poblacion_emp">
             </div>
 
 
             <!-- Código postal, texto 5 numéricos -->
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-2">
                 <label for="cp_emp" class="form-label">Código postal</label>
                 <input class="form-control" maxlength="5" name="cp_emp" value="{{old('cp_emp')}}" id="cp_emp" placeholder="07123">
             </div>
@@ -146,13 +146,13 @@
         <!-- Titularidad, -->
         <div class="row align-items-start">
             <p class="inline">Titularidad</p>
-            <div class="form-check col-2">
+            <div class="form-check col-md-2">
                 <input class="form-check-input" type="radio" name="titularidad" value="publica" {{ (old('titularidad') == "publica") ? "checked" : ""}} id="id_publica">
                 <label class="form-check-label" for="id_publica">
                     Pública
                 </label>
             </div>
-            <div class="form-check col-2">
+            <div class="form-check col-md-2">
                 <input class="form-check-input" type="radio" name="titularidad" value="privada" {{ (old('titularidad') == "privada") ? "checked" : ""}} id="id_privada">
                 <label class="form-check-label" for="id_privada">
                     Privada
@@ -165,7 +165,7 @@
 
         <!-- Nombre del representante de la empresa, text, obligatorio -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="nombre_representante_em" class="form-label">Nombre</label>
                 <input class="form-control" name="representante_nombre" value="{{old('representante_nombre')}}" id="representante_nombre" aria-describedby="HelpBlock">
                 <div id="HelpBlock" class="form-text">
@@ -175,7 +175,7 @@
 
 
             <!-- nif del representante de la empresa, obligatorio -->
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-3">
                 <label for="representante_nif" class="form-label">NIF</label>
                 <input class="form-control" name="representante_nif" value="{{old('representante_nif')}}" id="representante_nif">
             </div>
@@ -188,7 +188,7 @@
         <legend>Centro de trabajo</legend>
 
         <!-- Nombre del centro de trabajo, text, obligatorio -->
-        <div class="mb-3 col-6">
+        <div class="mb-3 col-md-6">
             <label for="nombre_ct" class="form-label">Nombre</label>
             <input class="form-control" name="nombre_ct" value="{{old('nombre_ct')}}" id="nombre_ct">
         </div>
@@ -196,19 +196,19 @@
 
         <!-- Dirección del centro de trabajo -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="direccion_ct" class="form-label">{{__('datosempresa.dir_postal')}}</label>
                 <input class="form-control" name="direccion_ct" value="{{old('direccion_ct')}}" id="direccion_ct">
             </div>
 
             <!-- Población, text, obligatorio -->
-            <div class="mb-3 col-4">
+            <div class="mb-3 col-md-4">
                 <label for="poblacion_ct" class="form-label">Población</label>
                 <input class="form-control" name="poblacion_ct" value="{{old('poblacion_ct')}}" id="poblacion_ct">
             </div>
 
             <!-- Código postal, texto 5 numéricos -->
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-2">
                 <label for="cp_ct" class="form-label">Código postal</label>
                 <input class="form-control" name="cp_ct" maxlength="5" value="{{old('cp_ct')}}" id="cp_ct" placeholder="07123">
             </div>
@@ -251,12 +251,12 @@
 
         <div class="row align-items-start">
             <!-- Actividad en ct, text, opcional -->
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="actividad_ct" class="form-label">Actividad principal</label>
                 <input class="form-control" name="actividad_ct" value="{{old('actividad_ct')}}" id="actividad_ct">
             </div>
 
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-2">
                 <label for="jornada" class="form-label">Tipo de jornada</label>
                 <select class="form-select" name='jornada' id="jornada">
                     <option value="continua" @if (old('jornada') === 'continua') selected @endif>Continua</option>
@@ -271,24 +271,6 @@
             </div>
         </div>
 
-
-
-        <!-- Tipo de jornada,  radio,obligatorio 
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="jornadacontinua">
-                Jornada continua
-            </label> 
-            <input class="form-check-input" type="radio" name="jornada[]" value="continua" id="jornadacontinua">
-
-        </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="jornadapartida">
-                Jornada partida
-            </label>
-            <input class="form-check-input" type="radio" name="jornada" value="partida" id="jornadapartida">
-
-        </div>
-        -->
     </fieldset>
 
 
@@ -298,7 +280,7 @@
 
         <!-- Coordinador de FCT, text, opcional -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="nombre_coordinador_fct" class="form-label">Nombre del coordinador de FCT</label>
                 <input class="form-control" name="nombre_coordinador_fct" value="{{old('nombre_coordinador_fct')}}" id="nombre_coordinador_fct" aria-describedby="HelpCoordinador">
                 <div id="HelpCoordinador" class="form-text">
@@ -308,8 +290,8 @@
 
 
             <!-- nif del coordinador de FCT, obligatorio se existe coordinador -->
-            <div class="mb-3 col-2">
-                <label for="nif_coordinador_fct" class="form-label">NIF del coordinador FCT</label>
+            <div class="mb-3 col-md-3">
+                <label for="nif_coordinador_fct" class="form-label">NIF del coordinador</label>
                 <input class="form-control" name="nif_coordinador_fct" value="{{old('nif_coordinador_fct')}}" id="nif_coordinador_fct">
             </div>
 
@@ -318,7 +300,7 @@
 
         <!-- Tutor de FCT, text -->
         <div class="row align-items-start">
-            <div class="mb-3 col-6">
+            <div class="mb-3 col-md-6">
                 <label for="nombre_tutor_emp" class="form-label">Nombre del tutor</label>
                 <input class="form-control" name="nombre_tutor_emp" value="{{old('nombre_tutor_emp')}}" id="nombre_tutor_emp"  aria-describedby="HelpTutor">
                 <div id="HelTutor" class="form-text">
@@ -328,7 +310,7 @@
 
 
             <!-- nif del tutor de FCT -->
-            <div class="mb-3 col-2">
+            <div class="mb-3 col-md-3">
                 <label for="nif_tutor_emp" class="form-label">NIF del tutor</label>
                 <input class="form-control" type="text" name="nif_tutor_emp" value="{{old('nif_tutor_emp')}}" id="nif_tutor_emp">
             </div>
@@ -372,10 +354,4 @@
 
     <button type="submit" class="btn btn-primary mt-2">Enviar</button>
 </form>
-<datalist id="listatelefonos">
-    <option value="(154) 215-4468">
-    <option value="(154) 254-7863">
-    <option value="(146) 123-7821">
-    <option value="(112) 645-4565">
-</datalist>
 @endsection

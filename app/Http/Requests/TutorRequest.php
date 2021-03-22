@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use \App\Models\Tutor;
 
 class TutorRequest extends FormRequest {
@@ -25,7 +26,8 @@ class TutorRequest extends FormRequest {
         return [
             'nombre_emp' => 'string',
             //'nif_tutor_emp' => "required|min:8|max:12|unique:tutores,nif_tutor_emp,$tutor->id" ,
-            'nif_tutor_emp' => 'required|min:8|max:12',
+            'nif_tutor_emp' => ['required', 'min:8', 'max:12',
+                Rule::unique('tutores')->ignore($this->route('tutor'))],
             'documento' => 'required|in:dni,nif,pasaporte',
             'nombre_tutor_emp' => 'string',
             'apellido1_tutor_emp' => 'string',
@@ -38,7 +40,7 @@ class TutorRequest extends FormRequest {
 
     public function messages() {
         return [
-            //
+                //
         ];
     }
 

@@ -32,7 +32,7 @@ class TutorController extends Controller {
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Hºttp\Response
      */
     public function store(Tutor $tutor, TutorRequest $request) {
 
@@ -48,7 +48,7 @@ class TutorController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show(Tutor $tutor) {
-        return view('tutores.tutores_show', [
+        return view('tutores.tutor_edit', [
             'tutor' => $tutor
         ]);
     }
