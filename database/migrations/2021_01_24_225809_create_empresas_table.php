@@ -22,7 +22,7 @@ class CreateEmpresasTable extends Migration {
             $table->string('cif', 10)->unique();
             $table->string('direccion_emp', 40);
             $table->string('poblacion_emp', 35);
-            $table->char('cp_emp', 5);
+            $table->char('cp_emp', 5)->comment('Código postal');
             $table->string('telefono1_emp', 12);
             $table->string('telefono2_emp', 12)->nullable();
             $table->string('fax_emp', 12)->nullable();
@@ -37,7 +37,7 @@ class CreateEmpresasTable extends Migration {
             $table->string('nif_coordinador_fct', 12)->nullable()->comment('Puede existir a nivel de empresa o de centro de trabajo');
             $table->string('lugar_firma', 35)->comment('Es posible que se elimine, pues el lugar que interesa es el del Acuerdo');
             $table->date('fecha_firma')->comment('Es posible que se elimine, pues la fecha que interesa es el del Acuerdo');
-            $table->text('comentarios')->nullable();
+            $table->text('comentarios')->nullable()->comment('Imagen con el logo de la comunidad');
             
             $table->softDeletes();
             $table->timestamps();

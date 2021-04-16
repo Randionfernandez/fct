@@ -33,9 +33,9 @@ class CreateTutoresTable extends Migration {
 
             $table->string('nombre_emp');
             $table->unsignedBigInteger('id_emp');
-//            $table->foreign('id_emp')->references('id')->on('empresas');
-        });
 
+            $table->foreign('id_emp')->references('id')->on('empresas');
+        });
 
         DB::statement("comment on table tutores is 'Según Gestib, el tutor debe vincularse a la empresa y no a un centro de trabajo'");
     }
