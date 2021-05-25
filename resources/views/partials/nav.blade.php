@@ -2,7 +2,7 @@
     <div class="container">
 <!--         <span class="navbar-brand mb-0 h1">{{ config('app.name') }}</span>-->
         <a class="navbar-brand" href="{{ route('tutores.index') }}">
-            <img src="/img/fct.jpeg" alt="" height="70">
+            <img src="/img/fct.jpg" alt="" height="70">
             <!--               {{ config('app.name') }}-->
         </a>
         <button class="navbar-toggler" type="button"

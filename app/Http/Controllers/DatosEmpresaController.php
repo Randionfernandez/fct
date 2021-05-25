@@ -72,7 +72,7 @@ class DatosEmpresaController extends Controller {
                         'comentarios' => $i['comentarios']]);
 
             // Inserción del centro de trabajo usando Query Builder
-            DB::table('centros_de_trabajo')->insertGetId([
+            DB::table('centros_de_trabajo')->insert([
                 'nombre_ct' => $i['nombre_ct'],
                 'direccion_ct' => $i['direccion_ct'],
                 'poblacion_ct' => $i['poblacion_ct'],

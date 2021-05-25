@@ -111,7 +111,8 @@
 
                 this.form.post(route('user-profile-information.update'), {
                     errorBag: 'updateProfileInformation',
-                    preserveScroll: true
+                    preserveScroll: true,
+                    onSuccess: () => (this.clearPhotoFileInput()),
                 });
             },
 
@@ -120,20 +121,33 @@
             },
 
             updatePhotoPreview() {
+                const photo = this.$refs.photo.files[0];
+
+                if (! photo) return;
+
                 const reader = new FileReader();
 
                 reader.onload = (e) => {
                     this.photoPreview = e.target.result;
                 };
 
-                reader.readAsDataURL(this.$refs.photo.files[0]);
+                reader.readAsDataURL(photo);
             },
 
             deletePhoto() {
                 this.$inertia.delete(route('current-user-photo.destroy'), {
                     preserveScroll: true,
-                    onSuccess: () => (this.photoPreview = null),
+                    onSuccess: () => {
+                        this.photoPreview = null;
+                        this.clearPhotoFileInput();
+                    },
                 });
+            },
+
+            clearPhotoFileInput() {
+                if (this.$refs.photo?.value) {
+                    this.$refs.photo.value = null;
+                }
             },
         },
     }
