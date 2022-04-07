@@ -27,7 +27,7 @@
                     Cancel
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <jet-button class="ml-3" @click="confirmPassword" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     {{ button }}
                 </jet-button>
             </template>
@@ -36,13 +36,14 @@
 </template>
 
 <script>
-    import JetButton from './Button'
-    import JetDialogModal from './DialogModal'
-    import JetInput from './Input'
-    import JetInputError from './InputError'
-    import JetSecondaryButton from './SecondaryButton'
+    import { defineComponent } from 'vue'
+    import JetButton from './Button.vue'
+    import JetDialogModal from './DialogModal.vue'
+    import JetInput from './Input.vue'
+    import JetInputError from './InputError.vue'
+    import JetSecondaryButton from './SecondaryButton.vue'
 
-    export default {
+    export default defineComponent({
         emits: ['confirmed'],
 
         props: {
@@ -110,5 +111,5 @@
                 this.form.error = '';
             },
         }
-    }
+    })
 </script>

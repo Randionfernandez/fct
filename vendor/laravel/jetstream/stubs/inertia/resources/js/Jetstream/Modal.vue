@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import { onMounted, onUnmounted } from "vue";
+import { defineComponent, onMounted, onUnmounted } from "vue";
 
-export default {
+export default defineComponent({
         emits: ['close'],
 
         props: {
@@ -73,7 +73,10 @@ export default {
             }
 
             onMounted(() => document.addEventListener('keydown', closeOnEscape))
-            onUnmounted(() => document.removeEventListener('keydown', closeOnEscape))
+            onUnmounted(() => {
+                document.removeEventListener('keydown', closeOnEscape)
+                document.body.style.overflow = null
+            })
 
             return {
                 close,
@@ -91,5 +94,5 @@ export default {
                 }[this.maxWidth]
             }
         }
-    }
+    })
 </script>

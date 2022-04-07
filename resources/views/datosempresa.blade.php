@@ -108,24 +108,24 @@
         </div>
 
 
-        <!--   Ejemplo si el input 'sector' fuese un checkox  
+        <!--   Ejemplo si el input 'sector' fuese un checkox  -->
         <div class="bg-ligth">
-           <h3 class="inline">Sector productivo</h3>
-           <div class="row ml-6">
-               <div class="form-check col-2">
-                   <label class="form-check-label" for="id_primario">Primario</label>
-                   <input class="form-check-input" type="radio" name="sector" value="primario" @if(is_array(old('sector')) && in_array('primario', old('sector'))) checked @endif id="id_primario">
-               </div>
-               <div class="form-check col-2">
-                   <label class="form-check-label" for="id_secundario">Secundario</label>
-                   <input class="form-check-input" type="radio" name="sector" value="secundario" {{ (is_array(old('sector')) and in_array('secundario', old('sector'))) ? ' checked' : '' }} id="id_secundario">
-               </div>
-               <div class="form-check col-2">
-                   <label class="form-check-label" for="id_terciario">Terciario</label>
-                   <input class="form-check-input" type="radio" name="sector" value="terciario" {{ (is_array(old('sector')) and in_array('terciario', old('sector'))) ? ' checked' : '' }} id="id_terciario">
-               </div>
-           </div>
-               </div> -->
+            <h3 class="inline">Sector productivo</h3>
+            <div class="row ml-6">
+                <div class="form-check col-2">
+                    <label class="form-check-label" for="id_primario">Primario</label>
+                    <input class="form-check-input" type="checkbox" name="sector[]" value="primario" @if(is_array(old('sector')) && in_array('primario', old('sector'))) checked @endif id="id_primario">
+                </div>
+                <div class="form-check col-2">
+                    <label class="form-check-label" for="id_secundario">Secundario</label>
+                    <input class="form-check-input" type="checkbox" name="sector[]" value="secundario" {{ (is_array(old('sector')) and in_array('secundario', old('sector'))) ? ' checked' : '' }} id="id_secundario">
+                </div>
+                <div class="form-check col-2">
+                    <label class="form-check-label" for="id_terciario">Terciario</label>
+                    <input class="form-check-input" type="checkbox" name="sector[]" value="terciario" {{ (is_array(old('sector')) and in_array('terciario', old('sector'))) ? ' checked' : '' }} id="id_terciario">
+                </div>
+            </div>
+        </div> 
 
 
         <!-- Actividad principal, texto -->
@@ -270,7 +270,7 @@
                 <input class="form-control" name="horario_ct" value="{{old('horario_ct')}}" id="horario_ct">
             </div>
         </div>
-
+        radio
     </fieldset>
 
 
